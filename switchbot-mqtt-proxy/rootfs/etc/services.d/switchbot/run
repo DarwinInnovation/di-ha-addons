@@ -15,5 +15,8 @@ message=$(bashio::config 'message')
 ## Print the message the user supplied, defaults to "Hello World..."
 bashio::log.info "${message:="Hello World..."}"
 
+export SWITCHBOT_TOKEN=$(bashio::config 'switchbot.token')
+export SWITCHBOT_SECRET=$(bashio::config 'switchbot.secret')
+
 ## Run your program
-exec /usr/bin/my_program
+exec /usr/bin/switchbot-mqtt-proxy.py
