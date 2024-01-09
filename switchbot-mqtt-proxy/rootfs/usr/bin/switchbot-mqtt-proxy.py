@@ -23,6 +23,10 @@ TOKEN = os.environ["SWITCHBOT_TOKEN"] #'7ea000fbd7a6ea177550cabcac46d8abb0b06bef
 # secret key
 SECRET = os.environ["SWITCHBOT_SECRET"] #'c3d299f88b1f98532cfab9f5195253ab' # copy and paste from the SwitchBot app V6.14 or later
 
+MQTT_HOST = os.environ["MQTT_HOST"]
+MQTT_USER = os.environ["MQTT_USER"]
+MQTT_PASSWORD = os.environ["MQTT_PASSWORD"]
+
 class SwitchBotSensor:
     def __init__(self, device, type):
         self.device = device
@@ -124,7 +128,7 @@ class SwitchBotDevice:
                     payload=json.dumps(sensor.get_config()),
                     retain=True,
                 )
-        
+
 
     def __str__(self):
         return f'{self.device_id} {self.device_name} {self.device_type}'
@@ -176,7 +180,7 @@ class SwitchBotCloud:
         url = 'https://api.switch-bot.com/v1.1/devices'
         response = requests.get(url, headers=self.headers).json()
         print(response)
-        
+
         devices = []
 
         if 'statusCode' not in response or response['statusCode'] != 100:
@@ -192,8 +196,8 @@ class SwitchBotCloud:
 def main(args):
     sbcloud = SwitchBotCloud(TOKEN, SECRET)
 
-    client = mqtt.Client("ha-client")
-    client.username_pw_set("hotwatertank", "9drM4HvbVo")
+    client = mqtt.Client(args.broker)
+    client.username_pw_set(MQTT_USER, MQTT_PASSWORD)
     client.connect(args.broker)
     client.loop_start()
 
@@ -216,12 +220,11 @@ def main(args):
 
 
 if __name__ == "__main__":
+    print("Starting SwitchBot MQTT Proxy")
+    
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "-b", "--broker", help="Set broker", default="homeassistant.local"
-    )
-    parser.add_argument(
-        "-n", "--name", help="Set last part of topic", default="waterTankLT"
+        "-b", "--broker", help="Set broker", default=MQTT_HOST
     )
     parser.add_argument("-d", "--delay", help="Update period", default=120, type=int)
     args = parser.parse_args()
