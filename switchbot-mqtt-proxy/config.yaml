@@ -15,10 +15,10 @@ map:
   - share:rw
 options:
   switchbot:
-    token: "token_from_app",
+    token: "token_from_app"
     secret: "secret_from_app"
 schema:
   switchbot:
-    token: "str",
+    token: "str"
     secret: "str"
 image: "ghcr.io/home-assistant/{arch}-addon-example"
