@@ -196,6 +196,7 @@ class SwitchBotCloud:
 def main(args):
     sbcloud = SwitchBotCloud(TOKEN, SECRET)
 
+    print(f"Connecting to MQTT broker {args.broker}")
     client = mqtt.Client(args.broker)
     client.username_pw_set(MQTT_USER, MQTT_PASSWORD)
     client.connect(args.broker)
@@ -221,7 +222,7 @@ def main(args):
 
 if __name__ == "__main__":
     print("Starting SwitchBot MQTT Proxy")
-    
+
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "-b", "--broker", help="Set broker", default=MQTT_HOST
