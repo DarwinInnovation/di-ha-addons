@@ -4,17 +4,7 @@
 # s6-overlay docs: https://github.com/just-containers/s6-overlay
 # ==============================================================================
 
-# Add your code here
-
-# Declare variables
-declare message
-
-## Get the 'message' key from the user config options.
-message=$(bashio::config 'message')
-
-## Print the message the user supplied, defaults to "Hello World..."
-bashio::log.info "${message:="Hello World..."}"
-
+## Load env vars
 export SWITCHBOT_TOKEN=$(bashio::config 'switchbot.token')
 export SWITCHBOT_SECRET=$(bashio::config 'switchbot.secret')
 
@@ -23,4 +13,5 @@ export MQTT_USER=$(bashio::services mqtt "username")
 export MQTT_PASSWORD=$(bashio::services mqtt "password")
 
 ## Run your program
+bashio::log.info "Running switchbot-mqtt-proxy.py"
 exec /usr/bin/switchbot-mqtt-proxy.py
