@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 1.2.8
+
+- Handle exceptions
+
 ## 1.2.2
 
 - Fix

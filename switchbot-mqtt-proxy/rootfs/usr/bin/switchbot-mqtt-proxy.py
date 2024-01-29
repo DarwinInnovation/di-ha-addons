@@ -18,10 +18,9 @@ from datetime import datetime
 import paho.mqtt.client as mqtt
 import paho.mqtt.publish as publish
 
-# open token
-TOKEN = os.environ["SWITCHBOT_TOKEN"] #'7ea000fbd7a6ea177550cabcac46d8abb0b06bef8f195ec372bcb3c53021c304b0853145d8b8dc10127ffb2641def544' # copy and paste from the SwitchBot app V6.14 or later
-# secret key
-SECRET = os.environ["SWITCHBOT_SECRET"] #'c3d299f88b1f98532cfab9f5195253ab' # copy and paste from the SwitchBot app V6.14 or later
+
+SWITCHBOT_TOKEN = os.environ["SWITCHBOT_TOKEN"]
+SWITCHBOT_SECRET = os.environ["SWITCHBOT_SECRET"]
 
 MQTT_HOST = os.environ["MQTT_HOST"]
 MQTT_USER = os.environ["MQTT_USER"]
@@ -194,7 +193,7 @@ class SwitchBotCloud:
 
 
 def main(args):
-    sbcloud = SwitchBotCloud(TOKEN, SECRET)
+    sbcloud = SwitchBotCloud(SWITCHBOT_TOKEN, SWITCHBOT_SECRET)
 
     print(f"Connecting to MQTT broker {args.broker}")
     client = mqtt.Client(args.broker)
@@ -205,11 +204,17 @@ def main(args):
     while True:
         need_config = True
         for device in sbcloud.get_devices():
-            if need_config:
-                device.publish_config(client)
-                need_config = False
-            status = device.publish_status(client)
-            print(status)
+            try:
+                if need_config:
+                    device.publish_config(client)
+                    need_config = False
+                status = device.publish_status(client)
+                print(status)
+            except KeyboardInterrupt as e:
+                raise e
+            except Exception as e:
+                print(f'Failed to connect to cloud: {e}')
+                continue
             # if status is not None:
             #     client.publish(
             #         f"homeassistant/sensor/{args.name}/state",

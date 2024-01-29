@@ -15,3 +15,4 @@ export MQTT_PASSWORD=$(bashio::services mqtt "password")
 ## Run your program
 bashio::log.info "Running switchbot-mqtt-proxy.py"
 exec /usr/bin/switchbot-mqtt-proxy.py
+bashio::log.info "Ran switchbot-mqtt-proxy.py"
