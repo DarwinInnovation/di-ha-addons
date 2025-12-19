@@ -19,7 +19,21 @@ options:
   switchbot:
     token: "token_from_app"
     secret: "secret_from_app"
+  mqtt:
+    host: ""
+    username: ""
+    password: ""
 schema:
   switchbot:
     token: "str"
     secret: "str"
+  mqtt:
+    host:
+      - "null"
+      - "str"
+    username:
+      - "null"
+      - "str"
+    password:
+      - "null"
+      - "str"
