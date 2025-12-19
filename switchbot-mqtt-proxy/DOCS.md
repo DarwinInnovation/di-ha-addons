@@ -3,11 +3,11 @@
 ## How to use
 
 1. Populate the `switchbot.token` and `switchbot.secret` options with the
-	credentials you obtain from the SwitchBot developer portal.
+    credentials you obtain from the SwitchBot developer portal.
 2. Configure or install an MQTT broker add-on so that Home Assistant exposes a
-	managed MQTT service (the add-on already requests `mqtt: need`).
+    managed MQTT service (the add-on already requests `mqtt: need`).
 3. Start this add-on; it polls the SwitchBot Cloud API, publishes sensor data to
-	MQTT, and automatically registers Home Assistant sensors for each device.
+    MQTT, and automatically registers Home Assistant sensors for each device.
 
 ### Configuration options
 
