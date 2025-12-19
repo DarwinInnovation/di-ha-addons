@@ -6,7 +6,7 @@
 
 ## 1.2.10
 
-- Improve documentation
+- Improved documentation
 
 ## 1.2.9
 
