@@ -26,12 +26,7 @@ schema:
     token: "str"
     secret: "str"
   mqtt:
-    host:
-      - "null"
-      - str
-    username:
-      - "null"
-      - str
-    password:
-      - "null"
-      - str
+    host: str
+    username: str
+    password: str
+    
