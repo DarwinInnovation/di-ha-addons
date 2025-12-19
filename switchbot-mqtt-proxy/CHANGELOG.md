@@ -10,7 +10,7 @@
 
 ## 1.2.9
 
-- Updates to build
+- Updated add-on build configuration and dependencies
 
 ## 1.2.8
 
