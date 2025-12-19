@@ -5,11 +5,8 @@ slug: switchbot-mqtt-proxy
 description: Polls the SwitchBot cloud API and posts all SwitchBot sensors to MQTT
 url: "https://github.com/DarwinInnovation/di-ha-addons/tree/main/switchbot-mqtt-proxy"
 arch:
-  - armhf
-  - armv7
   - aarch64
   - amd64
-  - i386
 init: false
 services:
   - "mqtt:need"
