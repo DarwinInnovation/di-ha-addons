@@ -1,6 +1,6 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
 name: SwitchBot MQTT Proxy
-version: "1.2.11"
+version: "1.2.12"
 slug: switchbot-mqtt-proxy
 description: Polls the SwitchBot cloud API and posts all SwitchBot sensors to MQTT
 url: "https://github.com/DarwinInnovation/di-ha-addons/tree/main/switchbot-mqtt-proxy"
@@ -29,4 +29,4 @@ schema:
     host: str
     username: str
     password: str
-    
+
