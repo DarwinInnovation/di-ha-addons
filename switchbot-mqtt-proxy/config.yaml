@@ -1,6 +1,6 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
 name: SwitchBot Cloud to MQTT Proxy add-on
-version: "1.2.8"
+version: "1.2.9"
 slug: example
 description: Polls the SwitchBot cloud API and forwards all sensor readings to MQTT
 url: "https://github.com/home-assistant/addons-example/tree/main/example"
@@ -19,7 +19,21 @@ options:
   switchbot:
     token: "token_from_app"
     secret: "secret_from_app"
+  mqtt:
+    host: ""
+    username: ""
+    password: ""
 schema:
   switchbot:
     token: "str"
     secret: "str"
+  mqtt:
+    host:
+      - null
+      - str
+    username:
+      - null
+      - str
+    password:
+      - null
+      - str

@@ -1,15 +1,10 @@
-# Home Assistant Add-on: Example add-on
+# SwitchBot Cloud to MQTT Proxy Add-on
 
-_Example add-on to use as a blueprint for new add-ons._
+Publishes SwitchBot sensor readings into MQTT and auto-discovers them inside
+Home Assistant. The add-on requires your SwitchBot API `token` and `secret`, plus
+an MQTT broker that Home Assistant registers for you.
 
-![Supports aarch64 Architecture][aarch64-shield]
-![Supports amd64 Architecture][amd64-shield]
-![Supports armhf Architecture][armhf-shield]
-![Supports armv7 Architecture][armv7-shield]
-![Supports i386 Architecture][i386-shield]
-
-[aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
-[amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
-[armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg
-[armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
-[i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
+If you want to target a broker that Home Assistant does not manage, fill the
+optional `mqtt.host`, `mqtt.username`, and `mqtt.password` options instead of
+depending on the service. The start script prioritizes those overrides and will
+exit with an error if it cannot find any MQTT host from either source.
