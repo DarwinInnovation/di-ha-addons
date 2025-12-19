@@ -1,4 +1,43 @@
-# Example Home Assistant add-on repository
+# Darwin Innovation Home Assistant Add-ons
+
+A curated collection of Home Assistant Supervisor add-ons published and maintained by
+Darwin Innovation. Each add-on contains Supervisor metadata, documentation, and
+docker build recipes so you can install them directly from this repository.
+
+[![Add repository to Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FDarwinInnovation%2Fdi-ha-addons)
+
+## Add-ons
+
+### SwitchBot MQTT Proxy
+
+- **Path:** `switchbot-mqtt-proxy`
+- **Description:** Polls the SwitchBot Cloud API, publishes all sensor readings to MQTT,
+  and auto-discovers those sensors inside Home Assistant.
+- **Requirements:** your SwitchBot API `token` and `secret`, plus a broker exposed to
+  the Supervisor MQTT service or overridden via the optional `mqtt` configuration block.
+- **Documentation:** see [`switchbot-mqtt-proxy/DOCS.md`](switchbot-mqtt-proxy/DOCS.md) for usage, options,
+  and MQTT override instructions.
+
+## Installing from this repository
+
+1. In Home Assistant Supervisor, go to **Add-on Store** > **Repositories** and add
+   `https://github.com/DarwinInnovation/di-ha-addons`.
+2. Install the desired add-on (for example, the SwitchBot MQTT Proxy) and configure
+   the provided options.
+3. Start the add-on; the log output and MQTT telemetry are visible inside the Supervisor UI.
+
+## Development notes
+
+- Each add-on publishes a `build.yaml` so GitHub Actions can build container images
+  for the architectures listed in `config.yaml`.
+- Keep the `version` key in sync with releases and update the corresponding `CHANGELOG.md` entry
+  before merging to the `main` branch.
+- Document any configuration overrides (like MQTT host) so edge-case deployments know how to target
+  alternative services.
+
+## Support
+
+Report issues or feature requests via [the GitHub issues page](https://github.com/DarwinInnovation/di-ha-addons/issues).# Example Home Assistant add-on repository
 
 This repository can be used as a "blueprint" for add-on development to help you get started.
 
