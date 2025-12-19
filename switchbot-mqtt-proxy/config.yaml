@@ -27,11 +27,11 @@ schema:
     secret: "str"
   mqtt:
     host:
-      - null
+      - "null"
       - str
     username:
-      - null
+      - "null"
       - str
     password:
-      - null
+      - "null"
       - str
