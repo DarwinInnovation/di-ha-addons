@@ -7,6 +7,7 @@ url: "https://github.com/DarwinInnovation/di-ha-addons/tree/main/switchbot-mqtt-
 arch:
   - aarch64
   - amd64
+image: "ghcr.io/darwininnovation/di-ha-addons-switchbot-mqtt-proxy-{arch}"
 init: false
 services:
   - "mqtt:need"
