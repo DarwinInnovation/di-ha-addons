@@ -196,7 +196,7 @@ def main(args):
     sbcloud = SwitchBotCloud(SWITCHBOT_TOKEN, SWITCHBOT_SECRET)
 
     print(f"Connecting to MQTT broker {args.broker}")
-    client = mqtt.Client(args.broker)
+    client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1, args.broker)
     client.username_pw_set(MQTT_USER, MQTT_PASSWORD)
     client.connect(args.broker)
     client.loop_start()
